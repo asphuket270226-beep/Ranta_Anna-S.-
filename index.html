@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>КП Ранта — Комплектация квартир | Анна Сидоренко</title>
+
+<!-- ═══ ПРЕВЬЮ ДЛЯ МЕССЕНДЖЕРОВ ═══ -->
+<meta name="description" content="Хоум-стейджинг двух демонстрационных квартир в ЖК «Ранта». Комплектация, свет, декор — под ключ.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="КП Ранта — Комплектация 2-х квартир">
+<meta property="og:description" content="Хоум-стейджинг демонстрационных квартир в ЖК «Ранта». Анна Сидоренко.">
+<meta property="og:image" content="https://asphuket270226-beep.github.io/Ranta_Anna-S/preview.jpg">
+<meta property="og:url" content="https://asphuket270226-beep.github.io/Ranta_Anna-S/">
+<meta property="og:site_name" content="Анна Сидоренко — Дизайн интерьеров">
+<meta name="twitter:card" content="summary_large_image">
+
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+    :root {
+        --bg-dark: #1a1a1a;
+        --bg-light: #f5f1eb;
+        --bg-cream: #ede7dd;
+        --accent: #b8956a;
+        --accent-light: #d4b88a;
+        --text-dark: #2c2c2c;
+        --text-light: #f5f1eb;
+        --muted: #8a8378;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+        font-family: 'Georgia', 'Times New Roman', serif;
+        background: var(--bg-dark);
+        color: var(--text-dark);
+        overflow-x: hidden;
+    }
+
+    /* ═══ КОНТЕЙНЕР С ВЕРТИКАЛЬНОЙ ПРОКРУТКОЙ ═══ */
+    .deck {
+        height: 100vh;
+        overflow-y: scroll;
+        scroll-snap-type: y mandatory;
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+    .deck::-webkit-scrollbar { display: none; }
+
+    /* ═══ СЛАЙД (вертикальный, на весь экран) ═══ */
+    .slide {
+        min-height: 100vh;
+        min-height: 100dvh;
+        scroll-snap-align: start;
+        scroll-snap-stop: always;
+        padding: 80px 24px 100px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: relative;
+        background: var(--bg-light);
+    }
+
+    .slide.dark { background: var(--bg-dark); color: var(--text-light); }
+    .slide.cream { background: var(--bg-cream); }
+    .slide.accent-bg {
+        background: linear-gradient(160deg, #1a1a1a 0%, #2d2620 60%, #3a2f24 100%);
+        color: var(--text-light);
+    }
+
+    /* Номер слайда */
+    .slide-number {
+        position: absolute;
+        top: 32px;
+        right: 24px;
+        font-family: 'Helvetica Neue', Arial, sans-serif;
+        font-size: 0.7rem;
+        letter-spacing: 0.25em;
+        color: var(--muted);
+        font-weight: 500;
+    }
+    .slide.dark .slide-number,
+    .slide.accent-bg .slide-number {
+        color: rgba(245, 241, 235, 0.4);
+    }
+
+    /* ═══ ТИПОГРАФИКА ═══ */
+    .eyebrow {
+        font-family: 'Helvetica Neue', Arial, sans-serif;
+        font-size: 0.65rem;
+        letter-spacing: 0.35em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin-bottom: 20px;
+        font-weight: 600;
+    }
+
+    h1 {
+        font-size: clamp(2.2rem, 9vw, 3.5rem);
+        font-weight: 400;
+        line-height: 1.1;
+        margin-bottom: 24px;
+        letter-spacing: -0.02em;
+    }
+
+    h2 {
+        font-size: clamp(1.6rem, 6.5vw, 2.4rem);
+        font-weight: 400;
+        line-height: 1.2;
+        margin-bottom: 28px;
+        letter-spacing: -0.01em;
+    }
+
+    h3 {
+        font-size: 1.05rem;
+        font-weight: 500;
+        margin-bottom: 8px;
+    }
+
+    p {
+        font-size: 1rem;
+        line-height: 1.7;
+        color: var(--text-dark);
+    }
+    .slide.dark p, .slide.accent-bg p { color: rgba(245, 241, 235, 0.88); }
+
+    .subtitle {
+        font-family: 'Helvetica Neue', Arial, sans-serif;
+        font-size: 0.95rem;
+        font-weight: 300;
+        letter-spacing: 0.05em;
+        color: var(--muted);
+        line-height: 1.6;
+    }
+    .slide.dark .subtitle, .slide.accent-bg .subtitle { color: var(--accent-light); }
+
+    .divider {
+        width: 50px;
+        height: 1px;
+        background: var(--accent);
+        margin: 28px 0;
+    }
+
+    /* ═══ СПИСКИ ═══ */
+    .feature-list { list-style: none; margin-top: 8px; }
+
+    .feature-list li {
+        padding: 18px 0 18px 24px;
+        border-bottom: 1px solid rgba(0,0,0,0.08);
+        position: relative;
+        font-size: 0.92rem;
+        line-height: 1.6;
+    }
+    .slide.dark .feature-list li,
+    .slide.accent-bg .feature-list li {
+        border-bottom: 1px solid rgba(245, 241, 235, 0.1);
+    }
+    .feature-list li::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 26px;
+        width: 12px;
+        height: 1px;
+        background: var(--accent);
+    }
+    .feature-list strong {
+        display: block;
+        font-family: 'Helvetica Neue', Arial, sans-serif;
+        font-weight: 600;
+        font-size: 0.7rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin-bottom: 6px;
+    }
+
+    /* ═══ ЦЕНА ═══ */
+    .price-block {
+        margin: 20px 0;
+    }
+    .price-main {
+        font-size: clamp(3.5rem, 16vw, 5rem);
+        font-weight: 400;
+        line-height: 1;
+        color: var(--text-light);
+        margin-bottom: 12px;
+    }
+    .price-detail {
+        font-family: 'Helvetica Neue', Arial, sans-serif;
+        font-size: 0.95rem;
+        letter-spacing: 0.08em;
+        color: var(--accent-light);
+        line-height: 1.6;
+    }
+    .price-detail span { color: rgba(245, 241, 235, 0.6); }
+
+    .note {
+        font-size: 0.82rem;
+        font-style: italic;
+        color: var(--muted);
+        line-height: 1.6;
+        margin-top: 20px;
+    }
+    .slide.dark .note, .slide.accent-bg .note {
+        color: rgba(245, 241, 235, 0.55);
+    }
+
+    /* ═══ ЭТАПЫ ═══ */
+    .stages {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        margin-top: 20px;
+    }
+    .stage-card {
+        background: rgba(255,255,255,0.7);
+        border: 1px solid rgba(184, 149, 106, 0.3);
+        padding: 20px;
+        border-radius: 6px;
+        position: relative;
+    }
+    .stage-header {
+        display: flex;
+        align-items: baseline;
+        gap: 14px;
+        margin-bottom: 10px;
+    }
+    .stage-number {
+        font-family: 'Helvetica Neue', Arial, sans-serif;
+        font-size: 1.6rem;
+        font-weight: 200;
+        color: var(--accent);
+        line-height: 1;
+    }
+    .stage-card h3 {
+        font-family: 'Helvetica Neue', Arial, sans-serif;
+        font-size: 0.75rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        margin-bottom: 0;
+        color: var(--text-dark);
+    }
+    .stage-card p {
+        font-size: 0.85rem;
+        line-height: 1.6;
+        margin-bottom: 12px;
+    }
+    .stage-price {
+        font-family: 'Helvetica Neue', Arial, sans-serif;
+        font-size: 0.82rem;
+        font-weight: 600;
+        color: var(--accent);
+        letter-spacing: 0.05em;
+        padding-top: 12px;
+        border-top: 1px solid rgba(184, 149, 106, 0.3);
+    }
+
+    /* ═══ ДВУХКОЛОНОЧНЫЙ СПИСОК (вертикально на телефоне) ═══ */
+    .col-block {
+        margin-bottom: 32px;
+    }
+    .col-block:last-child { margin-bottom: 0; }
+
+    .col-title {
+        font-family: 'Helvetica Neue', Arial, sans-serif;
+        font-size: 0.7rem;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin-bottom: 16px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid rgba(184, 149, 106, 0.3);
+        font-weight: 600;
+    }
+    .col-list { list-style: none; }
+    .col-list li {
+        padding: 10px 0 10px 20px;
+        position: relative;
+        font-size: 0.9rem;
+        line-height: 1.55;
+        color: var(--text-dark);
+    }
+    .slide.dark .col-list li { color: rgba(245, 241, 235, 0.88); }
+    .col-list li::before {
+        content: '—';
+        position: absolute;
+        left: 0;
+        color: var(--accent);
+    }
+
+    /* ═══ ФИНАЛЬНЫЙ СЛАЙД С КОНТАКТАМИ ═══ */
+    .final-slide {
+        text-align: center;
+        align-items: center;
+    }
+    .final-slide h2 {
+        font-size: clamp(1.4rem, 6vw, 2rem);
+        max-width: 100%;
+        margin-bottom: 24px;
+    }
+    .final-slide .divider { margin: 24px auto; }
+
+    .contacts-card {
+        width: 100%;
+        max-width: 400px;
+        background: rgba(255,255,255,0.05);
+        border: 1px solid rgba(184, 149, 106, 0.4);
+        border-radius: 12px;
+        padding: 32px 24px;
+        margin-top: 16px;
+        text-align: left;
+    }
+
+    .contacts-card h3 {
+        font-family: 'Helvetica Neue', Arial, sans-serif;
+        font-size: 0.7rem;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin-bottom: 24px;
+        text-align: center;
+        font-weight: 600;
+    }
+
+    .contact-name {
+        font-family: 'Georgia', serif;
+        font-size: 1.4rem;
+        color: var(--text-light);
+        margin-bottom: 24px;
+        text-align: center;
+        letter-spacing: 0.02em;
+    }
+
+    .contact-row {
+        display: flex;
+        align-items: flex-start;
+        gap: 14px;
+        padding: 14px 0;
+        border-top: 1px solid rgba(184, 149, 106, 0.2);
+    }
+    .contact-row:last-child { border-bottom: 1px solid rgba(184, 149, 106, 0.2); }
+
+    .contact-icon {
+        font-size: 1.1rem;
+        flex-shrink: 0;
+        margin-top: 2px;
+    }
+
+    .contact-info {
+        flex: 1;
+    }
+    .contact-label {
+        font-family: 'Helvetica Neue', Arial, sans-serif;
+        font-size: 0.65rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--accent-light);
+        margin-bottom: 6px;
+        opacity: 0.8;
+    }
+    .contact-value {
+        font-family: 'Helvetica Neue', Arial, sans-serif;
+        font-size: 1rem;
+        color: var(--text-light);
+        font-weight: 400;
+        letter-spacing: 0.02em;
+        word-break: break-word;
+    }
+    .contact-value a {
+        color: var(--text-light);
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+    .contact-value a:hover { color: var(--accent); }
+
+    .cta-line {
+        font-family: 'Helvetica Neue', Arial, sans-serif;
+        font-size: 0.72rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin-top: 32px;
+        opacity: 0.85;
+    }
+
+    /* ═══ ИНДИКАТОРЫ СЛАЙДОВ (справа) ═══ */
+    .dots {
+        position: fixed;
+        right: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        z-index: 100;
+        pointer-events: none;
+    }
+    .dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: rgba(184, 149, 106, 0.3);
+        transition: all 0.4s ease;
+        border: none;
+        padding: 0;
+    }
+    .dot.active {
+        background: var(--accent);
+        height: 20px;
+        border-radius: 3px;
+    }
+
+    /* ═══ СТРЕЛКА ВНИЗ (подсказка свайпа) ═══ */
+    .scroll-hint {
+        position: absolute;
+        bottom: 24px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-family: 'Helvetica Neue', Arial, sans-serif;
+        font-size: 0.65rem;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        color: var(--muted);
+        opacity: 0.7;
+        animation: bounce 2s infinite;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+    }
+    .slide.dark .scroll-hint,
+    .slide.accent-bg .scroll-hint { color: var(--accent-light); }
+
+    .scroll-hint .arrow {
+        font-size: 1rem;
+        opacity: 0.7;
+    }
+
+    @keyframes bounce {
+        0%, 100% { transform: translateX(-50%) translateY(0); }
+        50% { transform: translateX(-50%) translateY(6px); }
+    }
+
+    /* Скрываем подсказку на последнем слайде */
+    .slide:last-child .scroll-hint { display: none; }
+
+    /* ═══ АНИМАЦИЯ ПОЯВЛЕНИЯ ПРИ СКРОЛЛЕ ═══ */
+    .slide > * {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .slide.visible > * {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    .slide.visible > *:nth-child(2) { transition-delay: 0.05s; }
+    .slide.visible > *:nth-child(3) { transition-delay: 0.1s; }
+    .slide.visible > *:nth-child(4) { transition-delay: 0.15s; }
+    .slide.visible > *:nth-child(5) { transition-delay: 0.2s; }
+
+    /* ═══ АДАПТАЦИЯ ПОД БОЛЬШИЕ ЭКРАНЫ ═══ */
+    @media (min-width: 768px) {
+        .slide { padding: 100px 60px 100px; }
+        .slide > * { max-width: 640px; }
+        .final-slide > * { max-width: 100%; }
+        .stages { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    }
+
+    @media (min-width: 1100px) {
+        .slide { padding: 100px 120px; align-items: center; }
+        .slide > * { max-width: 760px; width: 100%; }
+        .final-slide > * { max-width: 100%; }
+    }
+</style>
+</head>
+<body>
+
+<!-- Индикаторы справа -->
+<div class="dots" id="dots"></div>
+
+<div class="deck" id="deck">
+
+    <!-- SLIDE 1: TITLE -->
+    <section class="slide accent-bg">
+        <div class="slide-number">01 / 08</div>
+        <div class="eyebrow">Хоум-стейджинг · Комплектация</div>
+        <h1>Две квартиры.<br>Два готовых<br>сценария жизни.</h1>
+        <div class="divider"></div>
+        <p class="subtitle">Комплектация демонстрационных квартир в ЖК «Ранта»</p>
+        <div class="scroll-hint">
+            <span>Листайте</span>
+            <span class="arrow">↓</span>
+        </div>
+    </section>
+
+    <!-- SLIDE 2: INTRO -->
+    <section class="slide">
+        <div class="slide-number">02 / 08</div>
+        <div class="eyebrow">Задача</div>
+        <h2>Подготовить квартиры к показам покупателям</h2>
+        <div class="divider"></div>
+        <p>Предлагаю подготовить две квартиры с чистовой отделкой к показам потенциальным покупателям: подобрать мебель, текстиль, свет и декор, организовать закупки и поставки, а затем собрать цельный интерьер, который поможет посетителю представить жизнь в квартире.</p>
+        <p class="note">Бюджет на мебель и декор оплачивается отдельно и не входит в стоимость услуг.</p>
+    </section>
+
+    <!-- SLIDE 3: PRICE -->
+    <section class="slide dark">
+        <div class="slide-number">03 / 08</div>
+        <div class="eyebrow">Инвестиции</div>
+        <h2>Стоимость услуги</h2>
+        <div class="price-block">
+            <div class="price-main">100 000 ₽</div>
+            <div class="price-detail">за работу с двумя квартирами<br><span>50 000 ₽ / квартира</span></div>
+        </div>
+        <div class="divider"></div>
+        <p>Точный график утверждается после осмотра и подтверждения бюджета.</p>
+    </section>
+
+    <!-- SLIDE 4: WHAT'S INCLUDED -->
+    <section class="slide">
+        <div class="slide-number">04 / 08</div>
+        <div class="eyebrow">Состав услуги</div>
+        <h2>Что входит в стоимость</h2>
+        <ul class="feature-list">
+            <li><strong>Осмотр и задача</strong>Выезд на объект, фиксация исходных условий, обсуждение аудитории и сценариев использования квартир. Анализ бюджета и формата объекта.</li>
+            <li><strong>Концепция и расстановка</strong>Общее стилистическое направление и отдельные решения для каждой квартиры; функциональная расстановка мебели.</li>
+            <li><strong>Подбор комплектации</strong>Мебель, ковры, шторы и текстиль, светильники, настенный декор, аксессуары и предметы для создания жизненного сценария.</li>
+            <li><strong>Бюджет и спецификация</strong>Сводная ведомость с количеством, ссылками, ценами на дату подбора, КП от поставщиков по каждой позиции.</li>
+            <li><strong>Организация закупок</strong>Сверка наличия и сроков, план заказов и поставок, координация доставки и сборки.</li>
+            <li><strong>Финальная подготовка</strong>Контроль клининга, расстановка и стилизация предметов, фотоотчёт для заказчика.</li>
+        </ul>
+    </section>
+
+    <!-- SLIDE 5: STAGES -->
+    <section class="slide cream">
+        <div class="slide-number">05 / 08</div>
+        <div class="eyebrow">Процесс</div>
+        <h2>Порядок реализации</h2>
+        <div class="stages">
+            <div class="stage-card">
+                <div class="stage-header">
+                    <div class="stage-number">01</div>
+                    <h3>Старт</h3>
+                </div>
+                <p>Бриф, осмотр двух квартир, сценарии показа. Концептуальное направление в виде презентации.</p>
+                <div class="stage-price">Аванс 25% — 25 000 ₽</div>
+            </div>
+            <div class="stage-card">
+                <div class="stage-header">
+                    <div class="stage-number">02</div>
+                    <h3>Подбор</h3>
+                </div>
+                <p>Подбор мебели, текстиля, декора. Ведомости с артикулами и ссылками, общий бюджет.</p>
+                <div class="stage-price">25% — 25 000 ₽</div>
+            </div>
+            <div class="stage-card">
+                <div class="stage-header">
+                    <div class="stage-number">03</div>
+                    <h3>Закупки</h3>
+                </div>
+                <p>Координация заказов, сверка сроков, организация поставок и сборки. Отчёт о товарах.</p>
+                <div class="stage-price">25% — 25 000 ₽</div>
+            </div>
+            <div class="stage-card">
+                <div class="stage-header">
+                    <div class="stage-number">04</div>
+                    <h3>Финал</h3>
+                </div>
+                <p>Контроль комплектации, расстановка, клининг, финальная стилизация, фотоотчёт.</p>
+                <div class="stage-price">25% — 25 000 ₽</div>
+            </div>
+        </div>
+        <p class="note">Срок оплаты каждого этапа — 3 рабочих дня с даты выставления счёта.</p>
+    </section>
+
+    <!-- SLIDE 6: REPORTING -->
+    <section class="slide dark">
+        <div class="slide-number">06 / 08</div>
+        <div class="eyebrow">Прозрачность</div>
+        <h2>Как устроена отчётность</h2>
+
+        <div class="col-block">
+            <div class="col-title">Ведомость предметов</div>
+            <ul class="col-list">
+                <li>Единая таблица комплектации по каждой квартире</li>
+                <li>Наименование, ссылка, артикул, количество</li>
+                <li>Цена на дату согласования, продавец, срок</li>
+                <li>Статус заказа и доставки</li>
+            </ul>
+        </div>
+
+        <div class="col-block">
+            <div class="col-title">Согласования и финал</div>
+            <ul class="col-list">
+                <li>Все выборы и изменения бюджета — письменно</li>
+                <li>Подтверждение в чате или по e-mail</li>
+                <li>В финале — фотоотчёт по объекту</li>
+                <li>Документы по закупкам оформляются на заказчика</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- SLIDE 7: BOUNDARIES -->
+    <section class="slide">
+        <div class="slide-number">07 / 08</div>
+        <div class="eyebrow">Границы услуги</div>
+        <h2>Условия сотрудничества</h2>
+
+        <div class="col-block">
+            <div class="col-title">Оплачивается отдельно</div>
+            <ul class="col-list">
+                <li>Товары: мебель, свет, текстиль, декор, посуда</li>
+                <li>Доставка, подъём, хранение, сборка, монтаж</li>
+                <li>Изготовление мебели на заказ</li>
+                <li>Строительные и отделочные работы</li>
+                <li>Клининг, фото- и видеосъёмка</li>
+                <li>Работы и выезды сверх согласованного объёма</li>
+            </ul>
+        </div>
+
+        <div class="col-block">
+            <div class="col-title">Защита сроков</div>
+            <ul class="col-list">
+                <li>Заказы не размещаются до согласования ведомости</li>
+                <li>Покупки оплачивает заказчик напрямую</li>
+                <li>Риски изменения цен и наличия — на заказчике</li>
+                <li>Приёмка акта — 5 рабочих дней</li>
+                <li>Изменение задания — доп. соглашение</li>
+                <li>Задержки согласований сдвигают сроки</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- SLIDE 8: CTA + CONTACTS -->
+    <section class="slide accent-bg final-slide">
+        <div class="slide-number">08 / 08</div>
+        <div class="eyebrow">Следующий шаг</div>
+        <h2>Готова обсудить задачу и зафиксировать финальную смету в договоре</h2>
+        <div class="divider"></div>
+
+        <div class="contacts-card">
+            <h3>Мои контакты</h3>
+            <div class="contact-name">Анна Сидоренко</div>
+
+            <div class="contact-row">
+                <span class="contact-icon">📞</span>
+                <div class="contact-info">
+                    <div class="contact-label">Телефон</div>
+                    <div class="contact-value">
+                        <a href="tel:+79219174224">+7 921 917 42 24</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-row">
+                <span class="contact-icon">✉️</span>
+                <div class="contact-info">
+                    <div class="contact-label">Email</div>
+                    <div class="contact-value">
+                        <a href="mailto:gnezdodizainera@mail.ru">gnezdodizainera@mail.ru</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <p class="cta-line">Свяжитесь любым удобным способом</p>
+    </section>
+
+</div>
+
+<script>
+    const deck = document.getElementById('deck');
+    const slides = document.querySelectorAll('.slide');
+    const dotsContainer = document.getElementById('dots');
+
+    // Создаём точки-индикаторы
+    slides.forEach((_, i) => {
+        const dot = document.createElement('button');
+        dot.classList.add('dot');
+        if (i === 0) dot.classList.add('active');
+        dotsContainer.appendChild(dot);
+    });
+    const dots = document.querySelectorAll('.dot');
+
+    // Отслеживаем, какой слайд сейчас в зоне видимости
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            const index = Array.from(slides).indexOf(entry.target);
+            if (entry.isIntersecting && entry.intersectionRatio > 0.4) {
+                // Обновляем точки
+                dots.forEach((d, i) => d.classList.toggle('active', i === index));
+                // Плавное появление контента
+                entry.target.classList.add('visible');
+            }
+        });
+    }, {
+        root: deck,
+        threshold: [0.4, 0.6]
+    });
+
+    slides.forEach(slide => observer.observe(slide));
+
+    // Первый слайд сразу показываем
+    slides[0].classList.add('visible');
+
+    // Клик по точке — переход к слайду
+    dots.forEach((dot, i) => {
+        dot.addEventListener('click', () => {
+            slides[i].scrollIntoView({ behavior: 'smooth' });
+        });
+    });
+
+    // Управление с клавиатуры (для десктопа)
+    document.addEventListener('keydown', (e) => {
+        const current = Array.from(slides).findIndex(s =>
+            s.getBoundingClientRect().top >= -50 && s.getBoundingClientRect().top <= 50
+        );
+        if (e.key === 'ArrowDown' || e.key === 'PageDown' || e.key === ' ') {
+            e.preventDefault();
+            const next = Math.min(current + 1, slides.length - 1);
+            slides[next].scrollIntoView({ behavior: 'smooth' });
+        } else if (e.key === 'ArrowUp' || e.key === 'PageUp') {
+            e.preventDefault();
+            const prev = Math.max(current - 1, 0);
+            slides[prev].scrollIntoView({ behavior: 'smooth' });
+        }
+    });
+</script>
+
+</body>
+</html>
